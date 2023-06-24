@@ -137,7 +137,7 @@ void sobrescreveArquivo(Candidato *&lista){
 void liberarMemoriaC(Candidato *&lista){
 	Candidato *candidatoAtual = NULL;
 	if(lista == NULL){
-		cout << "Lista está vazia";
+		cout << "";
              //caso a lista não estiver vazia o ponteiro do tipo no percorerra a lista
 		     //e ele ira receber a posição seguinte do candidato atual que sera tirado da memoria
 	}else{
@@ -306,7 +306,7 @@ bool verificaApto(int titulo, Eleitor* lista) {
 void liberarMemoriaE(Eleitor *&lista){
 	Eleitor *eleitorAtual = NULL;
 	if(lista == NULL){
-		cout << "Lista está vazia";
+		cout << "";
 		
 		
 	}else{
