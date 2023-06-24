@@ -509,7 +509,7 @@ void listaQtdVotos(Voto*& votos) {
         cout << "As eleições ainda não foram realizadas!" << endl;
     } else {
         while (votoAtual != NULL) {
-            cout << votoAtual->titulo << endl;
+            
             votoAtual = votoAtual->proximo;
         }
 
