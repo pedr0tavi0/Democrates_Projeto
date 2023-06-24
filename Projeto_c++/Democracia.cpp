@@ -476,8 +476,7 @@ void listaQtdVotosCandidato(Voto*& votos, Candidato*& lista) {
     if (votos == NULL) {
         cout << "As eleições ainda não foram realizadas!" << endl;
     } else {
-        while (votoAtual != NULL) {
-            cout << votoAtual->titulo << endl;
+        while (votoAtual != NULL) 
             votoAtual = votoAtual->proximo;
         }
 
