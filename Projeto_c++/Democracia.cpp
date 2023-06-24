@@ -469,7 +469,7 @@ void salvarVotosQtdVotos(int qtd){
     }
 }
 //função para salvaar a quantidade de votos por candidato
-void listaQtdVotosCandidato(Voto*& votos, Candidato*& lista) {
+void listaVotosCandidato(Voto*& votos, Candidato*& lista) {
     Candidato* candidatoAtual = lista;
     Voto* votoAtual = votos;
 
@@ -563,8 +563,7 @@ int main() {
 			
 		}else if(opc == 4){
 		     percorreCandidatos(listacandidatos);
-			listaQtdVotosCandidato(listavotos,listacandidatos);
-			listaQtdVotos(listavotos);
+			listaVotosCandidato(listavotos,listacandidatos);
 			liberarMemoriaC(listacandidatos);
 		}else{
 			cout << "Opção inválida"<<endl;
