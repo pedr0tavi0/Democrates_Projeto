@@ -37,12 +37,12 @@ public:
             ultimo = novoEleitor;
         }
 
-        cout << "Eleitor " << nome << " adicionado à fila." << endl;
+        cout << "Eleitor " << nome << " adicionado Ã  fila." << endl;
     }
 
     void desenfileirar() {
         if (estaVazia()) {
-            cout << "A fila está vazia." << endl;
+            cout << "A fila estÃ¡ vazia." << endl;
             return;
         }
 
@@ -59,22 +59,22 @@ public:
 
     void exibirFila() {
         if (estaVazia()) {
-            cout << "A fila está vazia." << endl;
+            cout << "A fila estÃ¡ vazia." << endl;
             return;
         }
 
         Eleitor* atual = primeiro;
         cout << "Fila de eleitores:" << endl;
         while (atual != NULL) {
-            cout << "Título: " << atual->titulo << ", Nome: " << atual->nome << endl;
+            cout << "TÃ­tulo: " << atual->titulo << ", Nome: " << atual->nome << endl;
             atual = atual->proximo;
         }
     }
     
 	int votar() {
     if (estaVazia()) {
-        cout << "A fila está vazia" << endl;
-        return -1; // Ou qualquer outro valor indicando uma situação de erro
+        cout << "A fila estÃ¡ vazia" << endl;
+        return -1; // Ou qualquer outro valor indicando uma situaÃ§Ã£o de erro
     }
     
     Eleitor* atual = primeiro;
@@ -83,9 +83,9 @@ public:
         atual = atual->proximo;
     }
 
-    return -1; // Se a execução chegar aqui, significa que não foi possível encontrar o título de eleitor
+    return -1; // Se a execuÃ§Ã£o chegar aqui, significa que nÃ£o foi possÃ­vel encontrar o tÃ­tulo de eleitor
 }
-    ~FilaEleitor() {
+    ~destructEleitor() {
     Eleitor* atual = primeiro;
     while (atual != NULL) {
         Eleitor* proximo = atual->proximo;
