@@ -1,0 +1,7 @@
+
+Lista de Votos por candidatos: 
+Nome: julio,,, Quantidade de votos: 0
+Lista de Votos por candidatos: 
+Nome: pedro,, Quantidade de votos: 1
+Lista da quantidade de votos: 
+Quantidade de votos: 0
