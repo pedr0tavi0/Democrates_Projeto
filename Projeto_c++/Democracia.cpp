@@ -500,33 +500,7 @@ void listaQtdVotosCandidato(Voto*& votos, Candidato*& lista) {
     }
 }
 
-//função para listar a quantidade de votos
-void listaQtdVotos(Voto*& votos) {
-    
-    Voto* votoAtual = votos;
 
-    if (votos == NULL) {
-        cout << "As eleições ainda não foram realizadas!" << endl;
-    } else {
-        while (votoAtual != NULL) {
-            
-            votoAtual = votoAtual->proximo;
-        }
-
-        
-		int qtd = 0;
-        while (votoAtual != NULL) {
-            
-            qtd++;
-            
-            votoAtual = votoAtual->proximo;
-            
-        }
-        cout << "A quantidade de votos é de: " << qtd << "votos" << endl;
-        salvarVotosQtdVotos(qtd);
-    }
-    
-}
 
 int main() {
 	setlocale(LC_ALL, "Portuguese");
