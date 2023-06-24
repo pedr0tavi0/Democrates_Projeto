@@ -28,7 +28,7 @@ void salvarCandidatoNotxt(const Candidato* candidato) {
         arquivo << candidato->nome << ", " << candidato->numero << endl;
         //fechando arquivo
         arquivo.close();
-        cout << "Candidato salvo com sucesso no arquivo Candidatos.txt" << endl;
+        cout  << endl;
     } else {
         cout << "Não foi possível abrir o arquivo Candidatos.txt" << endl;
     }
@@ -216,7 +216,7 @@ void salvarEleitorNotxt(Eleitor *eleitor){
     if (arquivo.is_open()) {//abrira o arquivo
         arquivo << eleitor->nome << ", " << eleitor->titulo << endl;//inserindo as informaçoes nas colunas em sequencia
         arquivo.close();
-        cout << "Candidato salvo com sucesso no arquivo Eleitores.txt" << endl;
+        cout <<  endl;
     } else {
         cout << "Não foi possível abrir o arquivo Eleitores.txt" << endl;
     }
@@ -451,7 +451,7 @@ void salvarVotosCEmtxt(string nome, int qtd){
     	arquivo << "Lista de Votos por candidatos: " << endl;
         arquivo << "Nome: " << nome << ", " <<"Quantidade de votos: "<< qtd << endl;
         arquivo.close();
-        cout << "Candidato salvo com sucesso no arquivo Votos.txt" << endl;
+        cout << endl;
     } else {
         cout << "Não foi possível abrir o arquivo Votos.txt" << endl;
     }
@@ -463,7 +463,7 @@ void salvarVotosQtdVotos(int qtd){
     	arquivo << "Lista da quantidade de votos: " << endl;
         arquivo <<"Quantidade de votos: "<< qtd << endl;
         arquivo.close();
-        cout << "Voto salvo com sucesso no arquivo Votos.txt" << endl;
+        cout <<  endl;
     } else {
         cout << "Não foi possível abrir o arquivo Votos.txt" << endl;
     }
