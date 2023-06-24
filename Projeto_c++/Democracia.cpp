@@ -18,7 +18,7 @@ struct Voto{
 	Voto *proximo;
 };
 
-//funÁ„o para salvar os candidatos no arquivo txt
+//fun√ß√£o para salvar os candidatos no arquivo txt
 void salvarCandidatoNotxt(const Candidato* candidato) {  
 	//verificando a existencia do arquivo Candidatos.txt
     ofstream arquivo("Candidatos.txt", ios::app);
@@ -30,44 +30,44 @@ void salvarCandidatoNotxt(const Candidato* candidato) {
         arquivo.close();
         cout << "Candidato salvo com sucesso no arquivo Candidatos.txt" << endl;
     } else {
-        cout << "N„o foi possÌvel abrir o arquivo Candidatos.txt" << endl;
+        cout << "N√£o foi poss√≠vel abrir o arquivo Candidatos.txt" << endl;
     }
 }
 
-// funÁ„o do sub menu do candidato
+// fun√ß√£o do sub menu do candidato
 int menuCandidatos(){
 	cout << "---Area do candidato---"<<endl;
 	cout << "------Bem Vindo!!-----" << endl;
-	cout << "Escolha uma opÁ„o" << endl;
+	cout << "Escolha uma op√ß√£o" << endl;
 	cout << "[1] - Inserir um novo candidato" << endl;
-	cout << "[2] - Lista dos candidatos j· cadastrados" << endl;
+	cout << "[2] - Lista dos candidatos j√° cadastrados" << endl;
 	cout << "[3] - Remover um candidato" << endl;
 	cout << "[4] - Voltar" << endl;
-	int subopc; //variavel instanciadda para salvar a opÁ„o escolida
+	int subopc; //variavel instanciadda para salvar a op√ß√£o escolida
 	cin >> subopc;
 	return subopc;
 }
 
-void insereCandidato(Candidato*& lista, const std::string& nome, int numero) { //funÁ„o que insere o new candidato na lista encadeada
+void insereCandidato(Candidato*& lista, const std::string& nome, int numero) { //fun√ß√£o que insere o new candidato na lista encadeada
     //instanciando as variaveis do no do new candiddato na lista encadeada
 	Candidato* newCandidato = new Candidato;
     newCandidato->nome = nome;
     newCandidato->numero = numero;
     newCandidato->proximo = NULL;
 
-    if (lista == NULL) { // caso a lista esteja vazia o candidato inserido ficara na primeira posiÁ„o
+    if (lista == NULL) { // caso a lista esteja vazia o candidato inserido ficara na primeira posi√ß√£o
         lista = newCandidato;
-        salvarCandidatoNotxt(newCandidato); //chamando a funÁ„o  para salvar o new candidato no txt
+        salvarCandidatoNotxt(newCandidato); //chamando a fun√ß√£o  para salvar o new candidato no txt
     } else {
-        Candidato* ultimo = lista; // se a lista ja tiver sido populada o ponteiro candidato ser· percorrido atÈ a ultima posiÁ„o
+        Candidato* ultimo = lista; // se a lista ja tiver sido populada o ponteiro candidato ser√° percorrido at√© a ultima posi√ß√£o
         while (ultimo->proximo != NULL) {
             ultimo = ultimo->proximo; // quando o ultimo ofr diferente de nullo o ponteiro apontara para o ultimo candidato da lista
         }
-        ultimo->proximo = newCandidato;//o ponteiro da ultima posiÁ„o ira apontar para o new candidato salvando ele na ultima posiÁ„o
+        ultimo->proximo = newCandidato;//o ponteiro da ultima posi√ß√£o ira apontar para o new candidato salvando ele na ultima posi√ß√£o
         salvarCandidatoNotxt(newCandidato); // e salvando no arquivo txt
     }
 }
-void cadastroCandidato(Candidato* lista){ //funÁ„o para a passagens de parametros do nome e numero do candidato para entrar na lista
+void cadastroCandidato(Candidato* lista){ //fun√ß√£o para a passagens de parametros do nome e numero do candidato para entrar na lista
 	string nome;
 	int num;
 	cout << "Insira o nome do Candidato: ";
@@ -77,13 +77,13 @@ void cadastroCandidato(Candidato* lista){ //funÁ„o para a passagens de parametro
 	insereCandidato(lista, nome, num);
 	 
 }
-void percorreCandidatos(Candidato*& lista) {     //funÁ„o para percorrer o arquivo txt e passar as informÁ„oes para a lista encadeada
+void percorreCandidatos(Candidato*& lista) {     //fun√ß√£o para percorrer o arquivo txt e passar as inform√ß√£oes para a lista encadeada
     ifstream arquivo("Candidatos.txt"); //verifica se existe o arquivo
     if (arquivo.is_open()) {//verifica se o arquivo esta aberto
         string nome;
         int numero;
         while (arquivo >> nome >> numero) { // percorre o arquivo txt pelas colunas nome e numero
-            Candidato* newCandidato = new Candidato; //declarando a variavel candidato do tipo no para salvar as informaÁıes dos candidatos 
+            Candidato* newCandidato = new Candidato; //declarando a variavel candidato do tipo no para salvar as informa√ß√µes dos candidatos 
             newCandidato->nome = nome;               // que foi obtido pelo percorrido do txt
             newCandidato->numero = numero;
             newCandidato->proximo = NULL;
@@ -94,32 +94,32 @@ void percorreCandidatos(Candidato*& lista) {     //funÁ„o para percorrer o arqui
                 Candidato* atual = lista; // se a lista estiver populada um ponteiro sera criado para percorrer a lista
                 while (atual->proximo != NULL) {
                     atual = atual->proximo;
-                }                              //assim fazendo o ponteiro percorrido apontar para o ultimo nÛ da lista 
-                atual->proximo = newCandidato;  // onde ser· no ultimo lugar da lista inserido o novo candidato
+                }                              //assim fazendo o ponteiro percorrido apontar para o ultimo n√≥ da lista 
+                atual->proximo = newCandidato;  // onde ser√° no ultimo lugar da lista inserido o novo candidato
             }
         }
         arquivo.close();
         cout << "Candidatos carregados com sucesso!" << endl;
     } else {
-        cout << "N„o foi possÌvel abrir o arquivo." << endl;
+        cout << "N√£o foi poss√≠vel abrir o arquivo." << endl;
     }
     
     
 }
-void listarCandidatos(const Candidato* lista) { //funÁ„o para listar os candidatos
+void listarCandidatos(const Candidato* lista) { //fun√ß√£o para listar os candidatos
     if (lista == NULL) {
-        cout << "Nenhum candidato foi cadastrado!." << endl; //mensagem de error caso n„o temha ninguem na lista
+        cout << "Nenhum candidato foi cadastrado!." << endl; //mensagem de error caso n√£o temha ninguem na lista
         return;
     }
     
-    const Candidato* candidatoAtual = lista;  //instanciado uma variavel do tipo no que percorrera a lista pelos nÛ traznedo as informaÁıes dos candidatos
+    const Candidato* candidatoAtual = lista;  //instanciado uma variavel do tipo no que percorrera a lista pelos n√≥ traznedo as informa√ß√µes dos candidatos
     while (candidatoAtual != NULL) {
-        cout << "Nome: " << candidatoAtual->nome << " N˙mero: " << candidatoAtual->numero << endl;
+        cout << "Nome: " << candidatoAtual->nome << " N√∫mero: " << candidatoAtual->numero << endl;
         candidatoAtual = candidatoAtual->proximo;
     }
 }
 
-//funÁ„o para sobreescrever o arquivo quando um candidato for tirado da lista atraves de um ponteiro que percorrera a lista 
+//fun√ß√£o para sobreescrever o arquivo quando um candidato for tirado da lista atraves de um ponteiro que percorrera a lista 
 void sobrescreveArquivo(Candidato *&lista){
 	 ofstream arquivo("Candidatos.txt");
     if (arquivo.is_open()) {
@@ -133,13 +133,13 @@ void sobrescreveArquivo(Candidato *&lista){
         cout << "Erro ao sobrescrever o arquivo" << endl;
     }
 }
-//funÁ„o que liberara a memoria da lista de candidatos para n„o ter lixo de memoria
+//fun√ß√£o que liberara a memoria da lista de candidatos para n√£o ter lixo de memoria
 void liberarMemoriaC(Candidato *&lista){
 	Candidato *candidatoAtual = NULL;
 	if(lista == NULL){
-		cout << "Lista est· vazia";
-             //caso a lista n„o estiver vazia o ponteiro do tipo no percorerra a lista
-		     //e ele ira receber a posiÁ„o seguinte do candidato atual que sera tirado da memoria
+		cout << "Lista est√° vazia";
+             //caso a lista n√£o estiver vazia o ponteiro do tipo no percorerra a lista
+		     //e ele ira receber a posi√ß√£o seguinte do candidato atual que sera tirado da memoria
 	}else{
 		candidatoAtual = lista;
 		while(candidatoAtual != NULL){
@@ -152,17 +152,17 @@ void liberarMemoriaC(Candidato *&lista){
 	}
 }
 
-//funÁ„o para remover o candidato est· com problemas para funcionar
+//fun√ß√£o para remover o candidato est√° com problemas para funcionar
 void removeCandidato(Candidato *&lista) {
 	
-    percorreCandidatos(lista);//percorrendo os candidatos que es„o no arquivo
+    percorreCandidatos(lista);//percorrendo os candidatos que es√£o no arquivo
 
     if (lista == NULL) {
-        cout << "Nenhum candidato cadastrado atÈ o momento" << endl;
+        cout << "Nenhum candidato cadastrado at√© o momento" << endl;
     } else {
-    	listarCandidatos(lista); // mpostrando os candidatos para a escolha de qual ser· removido
+    	listarCandidatos(lista); // mpostrando os candidatos para a escolha de qual ser√° removido
         int num = 0;
-        cout << "Informe o n˙mero do candidato que deseja excluir: ";
+        cout << "Informe o n√∫mero do candidato que deseja excluir: ";
         cin >> num;
 
         Candidato *auxiliar = NULL;
@@ -171,9 +171,9 @@ void removeCandidato(Candidato *&lista) {
            // duas variaveis do tipo no que percorreram a lista , o auxiliar para guardar na memoria a lista antes da exclusao
            // e o outro para percorrer a lista dos candidtaos agora
 
-        while (atual != NULL) { //faznedo a verificaÁ„oo do num que foi passado e o numero do candidato que esta na lista
+        while (atual != NULL) { //faznedo a verifica√ß√£oo do num que foi passado e o numero do candidato que esta na lista
             if (num == atual->numero) {
-                if (auxiliar == NULL) { // passando o valor do proximo candidato da sequencia para a lista pois o atual ser· excluido  "fazendo a danÁa das cadeiras"
+                if (auxiliar == NULL) { // passando o valor do proximo candidato da sequencia para a lista pois o atual ser√° excluido  "fazendo a dan√ßa das cadeiras"
               		   		 	 	   	// assim movendo o ponteiro para o candidato subsequente
                     lista = atual->proximo;
                 } else {
@@ -186,7 +186,7 @@ void removeCandidato(Candidato *&lista) {
                 break;
             } else {
             	
-            	//caso n„o seja o valor selecionado o ponteiro auxiliar recebera o valor do candidato atual
+            	//caso n√£o seja o valor selecionado o ponteiro auxiliar recebera o valor do candidato atual
                 auxiliar = atual;
                 //e o ponteiro autual ira apontar para o proximo candidato da lista
                 atual = atual->proximo;
@@ -198,41 +198,41 @@ void removeCandidato(Candidato *&lista) {
     liberarMemoriaC(lista);//liberando memoria da lista dinamica de candidatos.
 }
 
-//funÁ„o para exibir as opÁıes do eleitor
+//fun√ß√£o para exibir as op√ß√µes do eleitor
 int menuEleitores(){
 	cout << "----Area do Eleitor----"<<endl;
 	cout << "------Bem Vindo!!-----" << endl;
-	cout << "Escolha uma opÁ„o" << endl;
+	cout << "Escolha uma op√ß√£o" << endl;
 	cout << "[1] - Insira um novo eleitor" << endl;
 	cout << "[2] - Listar eleitores cadastrados" << endl;
 	cout << "[3] - Voltar" << endl;
-	int subopc; //variavel para salvar na memoria qual opÁ„o foi escolhida
+	int subopc; //variavel para salvar na memoria qual op√ß√£o foi escolhida
 	cin >> subopc;
 	return subopc;
 }
-//funÁ„o para salvar os eleitores no arquivo txt
+//fun√ß√£o para salvar os eleitores no arquivo txt
 void salvarEleitorNotxt(Eleitor *eleitor){
 	ofstream arquivo("Eleitores.txt", ios::app);//verificar se a o arquivo
     if (arquivo.is_open()) {//abrira o arquivo
-        arquivo << eleitor->nome << ", " << eleitor->titulo << endl;//inserindo as informaÁoes nas colunas em sequencia
+        arquivo << eleitor->nome << ", " << eleitor->titulo << endl;//inserindo as informa√ßoes nas colunas em sequencia
         arquivo.close();
         cout << "Candidato salvo com sucesso no arquivo Eleitores.txt" << endl;
     } else {
-        cout << "N„o foi possÌvel abrir o arquivo Eleitores.txt" << endl;
+        cout << "N√£o foi poss√≠vel abrir o arquivo Eleitores.txt" << endl;
     }
 }
 
-//funaÁ„o que inserir· o eleitor na lista encadeada
+//funa√ß√£o que inserir√° o eleitor na lista encadeada
 void inserirEleitor(Eleitor*& lista, const std::string& nome, int numero){
 	Eleitor* newEleitor = new Eleitor;
     newEleitor->nome = nome;
     newEleitor->titulo = numero;
     newEleitor->proximo = NULL;
 
-    if (lista == NULL) { //se a lista etiver vazia ira colocar na primeira posiÁ„o
+    if (lista == NULL) { //se a lista etiver vazia ira colocar na primeira posi√ß√£o
         lista = newEleitor;
         salvarEleitorNotxt(newEleitor);
-    } else { //se nao a lista ira percorrer atraves do ponteiro e ser· salvo na ultima posiÁ„o da lista
+    } else { //se nao a lista ira percorrer atraves do ponteiro e ser√° salvo na ultima posi√ß√£o da lista
         Eleitor* ultimo = lista;
         while (ultimo->proximo != NULL) {
             ultimo = ultimo->proximo;
@@ -242,7 +242,7 @@ void inserirEleitor(Eleitor*& lista, const std::string& nome, int numero){
     }
 }
 
-//funÁ„o para cadastrar o eleitor atrves dos parametros fornecidos
+//fun√ß√£o para cadastrar o eleitor atrves dos parametros fornecidos
 void cadastraEleitor(Eleitor *lista){
 	string nome;
 	int num;
@@ -250,23 +250,23 @@ void cadastraEleitor(Eleitor *lista){
 	cin >> nome;
 	cout << "Insira o numero do titulo de eleitor: ";
 	cin >> num;
-	inserirEleitor(lista, nome, num); //chamando a funÁ„o e fazendo as passagens de parametros para a lista encadeada
+	inserirEleitor(lista, nome, num); //chamando a fun√ß√£o e fazendo as passagens de parametros para a lista encadeada
 }
-//funÁ„o para percorrer o arquivo txt de eleitores e salvar as informaÁıes, passando para lista encadeada
+//fun√ß√£o para percorrer o arquivo txt de eleitores e salvar as informa√ß√µes, passando para lista encadeada
 void percorrerEleitores(Eleitor *&lista) {
     ifstream arquivo("Eleitores.txt");
     if (arquivo.is_open()) {
         string nome;
         int numero;
         while (arquivo >> nome >> numero) { // percorre o arquivo txt pelas colunas nome e numero
-            Eleitor* newEleitor = new Eleitor; //declarando a variavel eleitor do tipo no para salvar as informaÁıes dos candidatos 
+            Eleitor* newEleitor = new Eleitor; //declarando a variavel eleitor do tipo no para salvar as informa√ß√µes dos candidatos 
             newEleitor->nome = nome;
             newEleitor->titulo = numero;
             newEleitor->proximo = NULL;
 
             if (lista == NULL) {
                 lista = newEleitor;
-            } else { //caso a lista estiver populada percorrera um ponteiro atÈ o ultimo lugar da lista 
+            } else { //caso a lista estiver populada percorrera um ponteiro at√© o ultimo lugar da lista 
                 Eleitor* atual = lista; 
                 while (atual->proximo != NULL) { //assim fazendo-o apontar para o ultimo no da lista onde la sera inserido no new eleitor
                     atual = atual->proximo;
@@ -277,19 +277,19 @@ void percorrerEleitores(Eleitor *&lista) {
         arquivo.close();
         cout << "Eleitores carregados com sucesso!" << endl;
     } else {
-        cout << "N„o foi possÌvel abrir o arquivo!." << endl;
+        cout << "N√£o foi poss√≠vel abrir o arquivo!." << endl;
     }
     
     
 }
 
-//funÁ„o para verificar se o eleitor esta ou n„o apto a votar
+//fun√ß√£o para verificar se o eleitor esta ou n√£o apto a votar
 bool verificaApto(int titulo, Eleitor* lista) {
     Eleitor* eleitorAtual = lista;
     bool boolean = false;
     
     if (lista == NULL) {
-        cout << "N„o h· eleitor a ser exibido" << endl;
+        cout << "N√£o h√° eleitor a ser exibido" << endl;
         return false;
     } else {
         while (eleitorAtual != NULL) {
@@ -302,11 +302,11 @@ bool verificaApto(int titulo, Eleitor* lista) {
         return boolean;
     }
 }
-//funÁ„o para liberar a memoria da lista dinamica de eleitores
+//fun√ß√£o para liberar a memoria da lista dinamica de eleitores
 void liberarMemoriaE(Eleitor *&lista){
 	Eleitor *eleitorAtual = NULL;
 	if(lista == NULL){
-		cout << "Lista est· vazia";
+		cout << "Lista est√° vazia";
 		
 		
 	}else{
@@ -327,7 +327,7 @@ void listarEleitores(const Eleitor* lista) {
     
     const Eleitor* eleitorAtual = lista;
     while (eleitorAtual != NULL) {
-        cout << "Nome: " << eleitorAtual->nome << " N˙mero: " << eleitorAtual->titulo << endl;
+        cout << "Nome: " << eleitorAtual->nome << " N√∫mero: " << eleitorAtual->titulo << endl;
         eleitorAtual = eleitorAtual->proximo;
     }
 }
@@ -336,45 +336,45 @@ void listarEleitores(const Eleitor* lista) {
 int menu(){
 	
 	cout << "-----Menu------ " << endl;
-	cout << "Escolha uma opÁ„o"<<endl;
+	cout << "Escolha uma op√ß√£o"<<endl;
 	cout << "[1] - Area do Candidato" << endl;
 	cout << "[2] - Area do Eleitor" << endl;
-	cout << "[3] - VotaÁ„o" << endl;
-	cout << "[4] - ExibiÁ„o dos votos"<<endl;
+	cout << "[3] - Vota√ß√£o" << endl;
+	cout << "[4] - Exibi√ß√£o dos votos"<<endl;
 	cout << "[5] - Encerrar" << endl;
 	int opc;
 	cin >> opc;
 	return opc;
 }
 
-//funÁ„o para inserir elitores na fila de eleiÁ„o
+//fun√ß√£o para inserir elitores na fila de elei√ß√£o
 
 void insereFila(FilaEleitor*& fila, Eleitor *lista){
 	int titulo;
 	
-	cout << "Entre na fila de votaÁ„o!" << endl;
-	cout << "Insira o numero de seu tÌtulo de eleitor: ";
+	cout << "Entre na fila de vota√ß√£o!" << endl;
+	cout << "Insira o numero de seu t√≠tulo de eleitor: ";
 	cin >> titulo;
 	
-	if(verificaApto(titulo, lista)){ //chamando a funÁ„o de verificaÁ„o de apto a votar
+	if(verificaApto(titulo, lista)){ //chamando a fun√ß√£o de verifica√ß√£o de apto a votar
 		
-		cout << "Voce esta apto a votar!!, entrando na fila de votaÁ„o ..." << endl;
+		cout << "Voce esta apto a votar!!, entrando na fila de vota√ß√£o ..." << endl;
 		Eleitor *eleitorAtual = lista;//passando a lista a variavel
 		while(eleitorAtual != NULL){//perccorendo a lista de eleitores
-			if(eleitorAtual->titulo == titulo){//verificando se o numero do titulo informado È o mesmo do titulo->eleitor atual
-				fila->enfileirar(titulo, eleitorAtual->nome);//chamando a funÁ„o/metodo que ira inserir na fila
-				fila->exibirFila();//metodo/funÁ„o que exibe a fila
+			if(eleitorAtual->titulo == titulo){//verificando se o numero do titulo informado √© o mesmo do titulo->eleitor atual
+				fila->enfileirar(titulo, eleitorAtual->nome);//chamando a fun√ß√£o/metodo que ira inserir na fila
+				fila->exibirFila();//metodo/fun√ß√£o que exibe a fila
 			}
-			eleitorAtual = eleitorAtual->proximo;// se n„o apontara para o proximo eleitor da fila
+			eleitorAtual = eleitorAtual->proximo;// se n√£o apontara para o proximo eleitor da fila
 		}
 		
 		
 	}else{
-		cout << "VocÍ n„o est· Apto para votar!" << endl;
+		cout << "Voc√™ n√£o est√° Apto para votar!" << endl;
 	}
 	
 }
-//funÁ„o para pesquisar o nome do candidato e exibilo
+//fun√ß√£o para pesquisar o nome do candidato e exibilo
 string pesquisaNomeCandidato(int num, Candidato *lista){
 	Candidato *atual = lista;
 	while(atual != NULL){
@@ -387,7 +387,7 @@ string pesquisaNomeCandidato(int num, Candidato *lista){
 	return "";
 }
 
-//funÁ„o para inserir o voto na lista 
+//fun√ß√£o para inserir o voto na lista 
 void inserirVoto(Voto*& lista, const std::string& nome, int numero){
 	Voto* newVoto = new Voto; //declarando o no voto com os parametros do new voto
     newVoto->nome = nome;
@@ -397,7 +397,7 @@ void inserirVoto(Voto*& lista, const std::string& nome, int numero){
     if (lista == NULL) {
         lista = newVoto;
         
-    } else { //caso a lista ja esteja populada a variavel ira percorrer a lista e achara a ultima posiÁ„o e ira colocar o new voto nela
+    } else { //caso a lista ja esteja populada a variavel ira percorrer a lista e achara a ultima posi√ß√£o e ira colocar o new voto nela
         Voto* ultimo = lista;
         while (ultimo->proximo != NULL) {
             ultimo = ultimo->proximo;
@@ -406,36 +406,36 @@ void inserirVoto(Voto*& lista, const std::string& nome, int numero){
         
     }
 }
-//funÁ„o para registrar o voto na lista
+//fun√ß√£o para registrar o voto na lista
 void votar(FilaEleitor*& fila,Voto*& votos,Candidato*& candidatos){
 	int num;
 	if(fila->estaVazia()){
-		cout << "N„o h· eleitores na fila de eleiÁ„o!" << endl;
+		cout << "N√£o h√° eleitores na fila de elei√ß√£o!" << endl;
 		
 	}else{
 		int titulo = fila->votar();
 		Candidato *atual = candidatos;
 		listarCandidatos(candidatos);
 		
-		cout << "Insira o n˙mero do candidato que deseja votar: ";
+		cout << "Insira o n√∫mero do candidato que deseja votar: ";
 		cin >> num;
-		string nome = pesquisaNomeCandidato(num, candidatos);//chamando a funÁ„o para marcar o candidato na lista de votos realizados
+		string nome = pesquisaNomeCandidato(num, candidatos);//chamando a fun√ß√£o para marcar o candidato na lista de votos realizados
 		if(nome != ""){
                 
-		inserirVoto(votos,nome,num );//chamando a funÁ„o para iserir o voto na lista encadeada
+		inserirVoto(votos,nome,num );//chamando a fun√ß√£o para iserir o voto na lista encadeada
 		cout << "Voto concluido!" << endl;
         }else{
               cout << "Erro" << endl;
               } 
 		
-		fila->desenfileirar();//metodo/funÁ„o para tirar o primeiro eleitor da lista apor votar
+		fila->desenfileirar();//metodo/fun√ß√£o para tirar o primeiro eleitor da lista apor votar
 	}
 }
 
 
 int menuVoto(){
 	int opc;
-	cout << "------------VotaÁ„o----------" << endl;
+	cout << "------------Vota√ß√£o----------" << endl;
    	cout << "                              "<<endl;
 	cout << "[1] - Cadastrar na votacao" << endl;
 	cout << "[2] - Votar" << endl;
@@ -444,7 +444,7 @@ int menuVoto(){
 	return opc;
 }
 
-//funÁ„o para salvaer em arquivo txt os votos por candidato
+//fun√ß√£o para salvaer em arquivo txt os votos por candidato
 void salvarVotosCEmtxt(string nome, int qtd){
 	ofstream arquivo("votos.txt", ios::app);
     if (arquivo.is_open()) {
@@ -453,10 +453,10 @@ void salvarVotosCEmtxt(string nome, int qtd){
         arquivo.close();
         cout << "Candidato salvo com sucesso no arquivo Votos.txt" << endl;
     } else {
-        cout << "N„o foi possÌvel abrir o arquivo Votos.txt" << endl;
+        cout << "N√£o foi poss√≠vel abrir o arquivo Votos.txt" << endl;
     }
 }
-//cfunÁ„o para salvar a quantidade de votos total
+//cfun√ß√£o para salvar a quantidade de votos total
 void salvarVotosQtdVotos(int qtd){
 	ofstream arquivo("votos.txt", ios::app);
     if (arquivo.is_open()) {
@@ -465,16 +465,16 @@ void salvarVotosQtdVotos(int qtd){
         arquivo.close();
         cout << "Voto salvo com sucesso no arquivo Votos.txt" << endl;
     } else {
-        cout << "N„o foi possÌvel abrir o arquivo Votos.txt" << endl;
+        cout << "N√£o foi poss√≠vel abrir o arquivo Votos.txt" << endl;
     }
 }
-//funÁ„o para salvaar a quantidade de votos por candidato
+//fun√ß√£o para salvaar a quantidade de votos por candidato
 void listaQtdVotosCandidato(Voto*& votos, Candidato*& lista) {
     Candidato* candidatoAtual = lista;
     Voto* votoAtual = votos;
 
     if (votos == NULL) {
-        cout << "As eleiÁıes ainda n„o foram realizadas!" << endl;
+        cout << "As elei√ß√µes ainda n√£o foram realizadas!" << endl;
     } else {
         while (votoAtual != NULL) {
             cout << votoAtual->titulo << endl;
@@ -493,7 +493,7 @@ void listaQtdVotosCandidato(Voto*& votos, Candidato*& lista) {
             }
 
             salvarVotosCEmtxt(candidatoAtual->nome, qtd);
-            cout << "A quantidade de votos do candidato " << candidatoAtual->nome << " È: " << qtd << " votos" << endl;
+            cout << "A quantidade de votos do candidato " << candidatoAtual->nome << " √©: " << qtd << " votos" << endl;
 
             candidatoAtual = candidatoAtual->proximo;
         }
@@ -501,13 +501,13 @@ void listaQtdVotosCandidato(Voto*& votos, Candidato*& lista) {
     }
 }
 
-//funÁ„o para listar a quantidade de votos
+//fun√ß√£o para listar a quantidade de votos
 void listaQtdVotos(Voto*& votos) {
     
     Voto* votoAtual = votos;
 
     if (votos == NULL) {
-        cout << "As eleiÁıes ainda n„o foram realizadas!" << endl;
+        cout << "As elei√ß√µes ainda n√£o foram realizadas!" << endl;
     } else {
         while (votoAtual != NULL) {
             cout << votoAtual->titulo << endl;
@@ -523,7 +523,7 @@ void listaQtdVotos(Voto*& votos) {
             votoAtual = votoAtual->proximo;
             
         }
-        cout << "A quantidade de votos È de: " << qtd << "votos" << endl;
+        cout << "A quantidade de votos √© de: " << qtd << "votos" << endl;
         salvarVotosQtdVotos(qtd);
     }
     
@@ -554,7 +554,7 @@ int main() {
 				}else if(subopc == 3){
 					removeCandidato(listacandidatos);
 				}else{
-					cout << "Informe uma opÁ„o v·lida!" << endl;
+					cout << "Informe uma op√ß√£o v√°lida!" << endl;
 				}
 				subopc = menuCandidatos();
 			}
@@ -594,7 +594,7 @@ int main() {
 			listaQtdVotos(listavotos);
 			liberarMemoriaC(listacandidatos);
 		}else{
-			cout << "OpÁ„o inv·lida"<<endl;
+			cout << "Op√ß√£o inv√°lida"<<endl;
 		}
 		opc = menu();
 	}
