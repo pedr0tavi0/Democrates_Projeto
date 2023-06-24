@@ -85,7 +85,7 @@ public:
 
     return -1; // Se a execução chegar aqui, significa que não foi possível encontrar o título de eleitor
 }
-    ~destructEleitor() {
+    ~FilaEleitor() {
     Eleitor* atual = primeiro;
     while (atual != NULL) {
         Eleitor* proximo = atual->proximo;
